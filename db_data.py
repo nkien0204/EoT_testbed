@@ -1,22 +1,19 @@
 import pymongo
 import json
+import db_utils
 
-mongo_conn = pymongo.MongoClient("mongodb://localhost:27017")
-mongo_db = mongo_conn["fil_testbed"]
-mongo_col = mongo_db["fil_tb_col"]
+conn = "mongodb://localhost:27017"
+database = "fil_testbed"
+collection = "fil_tb_col"
 
-wireshark_file = open("/home/iot_team/Documents/EoT_testbed/packets.json", "r")
+mongo_col, check_conn = db_utils.CheckConnDB(conn, database, collection)
 
-# x = '{"name": "kien nguyen", "age": 22}'
-# y = json.loads(x)
+if check_conn:
+  print("Database was connected!")
+else:
+  print("Could not connect to database")
 
-data = wireshark_file.readlines()
-# data = wireshark_file.readlines()[0][1]
-# data = data[1:]
+packet = db_utils.GetPacket("/home/kn/Documents/FIL_EOT/packets.json")
 
-print(data[8])
-# print(len(data))
-# y = json.loads(data)
 
-# mongo_col.insert_one(wireshark_file)
-#jsdoifjasodijfaosidjfsaidfj
+print(packet)
