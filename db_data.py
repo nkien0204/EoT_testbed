@@ -15,5 +15,7 @@ else:
 
 packet = db_utils.GetPacket("/home/kn/Documents/FIL_EOT/packets.json")
 
+# mongo_col.insert(packet)
 
-print(packet)
+x = mongo_col.find().next()
+print(x["_source"])

@@ -15,5 +15,6 @@ def CheckConnDB(addr, database, collection):
 def GetPacket(packet_path):
   packet_file = open(packet_path, "r")
   str_packet = packet_file.read()[1:-2]
+  str_packet = str_packet.replace(".", "-")
   json_packet = json.loads(str_packet)
   return json_packet
