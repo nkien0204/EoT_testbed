@@ -14,7 +14,22 @@ def CheckConnDB(addr, database, collection):
 
 def GetPacket(packet_path):
   packet_file = open(packet_path, "r")
-  str_packet = packet_file.read()[1:-2]
-  str_packet = str_packet.replace(".", "-")
-  json_packet = json.loads(str_packet)
-  return json_packet
+  json_packet_list = []
+  packet = []
+  str_packet = ""
+  begin = 1
+  end = 0
+
+  lines = packet_file.readlines()
+  packet_file.close()
+  for end in range(end, len(lines)):
+    if lines[end] == "\n":
+      packet = lines[begin:end]
+      for index in packet:
+        str_packet += index
+      str_packet = str_packet.replace(".", "-")
+      json_packet_list.append(json.loads(str_packet))
+      begin = end + 2
+      str_packet = ""
+
+  return json_packet_list
