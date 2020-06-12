@@ -28,6 +28,3 @@ while True:
     print(notify)
 
   time.sleep(10)
-
-# x = mongo_col.find().next()
-# print(x["_source"])
