@@ -1,5 +1,6 @@
 import db_utils
 import time
+import os
 
 conn = "mongodb://localhost:27017"
 database = "fil_testbed"
@@ -24,7 +25,5 @@ while True:
       mongo_col.insert(packets_list[i])
     pre_len = cur_len
 
-    notify = "Inserting {} packet(s) to database...".format(cur_len)
+    notify = "\nInserting {} packet(s) to database...".format(cur_len)
     print(notify)
-
-  time.sleep(10)
