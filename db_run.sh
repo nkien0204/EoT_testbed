@@ -1,1 +1,1 @@
-python /home/kn/vsCodeWS/EoT/database/db_data.py
+python db_data.py
